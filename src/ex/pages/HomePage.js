@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import Footer from '../components/Footer';
-import Header from '../components/Header';
 import Home from '../components/home/Home';
 
 // http 요청 (fetch, axios, jquery사용x)
 
 const HomePage = () => {
   const [boards, setBoards] = useState([]);
+  const [user, setUser] = useState([]);
 
   useEffect(() => {
     let data = [
@@ -16,15 +15,10 @@ const HomePage = () => {
     ];
 
     setBoards([...data]);
+    setUser({ id: 1, username: 'ssar' });
   }, []);
 
-  return (
-    <div>
-      <Header />
-      <Home boards={boards} setBoards={setBoards} />
-      <Footer />
-    </div>
-  );
+  return <Home boards={boards} setBoards={setBoards} user={user} />;
 };
 
 export default HomePage;
